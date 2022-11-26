@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "bucket_site" {
 
 resource "aws_s3_bucket_acl" "bucket_site_acl" {
   bucket = aws_s3_bucket.bucket_site.id
-  acl    = var.bucket["acl"]
+  acl    = "private"
 }
 
 resource "aws_s3_bucket_website_configuration" "bucket_site_configuration" {
