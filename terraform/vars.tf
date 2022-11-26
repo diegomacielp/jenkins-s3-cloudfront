@@ -1,6 +1,6 @@
-variable "terraform_backend" {
+/*variable "terraform_backend" {
     type = string
-}
+}*/
 
 # BUCKET
 variable "bucket" {
