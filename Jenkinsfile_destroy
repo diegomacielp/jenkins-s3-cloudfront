@@ -15,7 +15,7 @@ pipeline {
                 withAWS(credentials:'AWS_CREDENTIAL') {
                     dir(path: 'terraform/') {
                         sh 'terraform init'
-                        sh 'terraform destroy -force'
+                        sh 'terraform destroy -auto-approve'
                     }
                 }
             }
