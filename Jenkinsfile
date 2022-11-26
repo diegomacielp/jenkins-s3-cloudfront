@@ -11,6 +11,7 @@ pipeline {
             steps {
                 dir(path: 'terraform/') {
                     sh 'terraform init'
+                    sh 'terraform plan'
                 }
             }
         }
