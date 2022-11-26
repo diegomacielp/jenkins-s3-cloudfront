@@ -9,9 +9,11 @@ pipeline {
                 }
             }
             steps {
-                dir(path: 'terraform/') {
-                    sh 'terraform init'
-                    sh 'terraform plan'
+                withAWS(credentials:'AWS_CREDENTIAL') {
+                    dir(path: 'terraform/') {
+                        sh 'terraform init'
+                        sh 'terraform plan'
+                    }
                 }
             }
         }
