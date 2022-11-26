@@ -1,11 +1,14 @@
 pipeline {
     agent any
+    environment {
+        TERRAFORM_STATE_DIR = '/var/lib/jenkins/terraform-state'
+    }
     stages {
         stage('Deploy S3') {
             agent {
                 docker {
                     image 'hashicorp/terraform:1.2.3'
-                    args '--entrypoint='
+                    args '-v "$TERRAFORM_STATE_DIR":/backend --entrypoint='
                 }
             }
             steps {
