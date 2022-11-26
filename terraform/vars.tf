@@ -1,7 +1,3 @@
-/*variable "terraform_backend" {
-    type = string
-}*/
-
 # BUCKET
 variable "bucket" {
   default = {
