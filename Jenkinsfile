@@ -4,7 +4,7 @@ pipeline {
         stage('Deploy S3') {
             agent {
                 docker {
-                    image 'hashicorp/terraform:1.3.5'
+                    image 'hashicorp/terraform:1.2.3'
                     args '--entrypoint='
                 }
             }
