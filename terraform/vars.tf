@@ -17,6 +17,7 @@ variable "aws" {
 # ROUTE 53
 variable "route53" {
   default = {
+    "zone_id" = "Z09261542P2MJ1F9ER7ET"
     "zone_name" = "tallos.com.br"
   }
   type = map(string)
