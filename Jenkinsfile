@@ -28,10 +28,13 @@ pipeline {
                 }
             }
             steps {
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: "AWS_CREDENTIAL",]]) {
-                    sh 'aws s3 cp index.html s3://test.tallos.com.br/"'
+                dir("${env.WORKSPACE}/") {
+                    withCredentials([[
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        credentialsId: "AWS_CREDENTIAL",]]) {
+                        sh 'pwd; ls'
+                        //sh 'aws s3 cp index.html s3://test.tallos.com.br/"'
+                    }
                 }
             }
         }
