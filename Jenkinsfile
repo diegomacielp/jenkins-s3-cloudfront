@@ -28,11 +28,11 @@ pipeline {
                 }
             }
             steps {
-                withAWS(credentials:'AWS_CREDENTIAL') {
-                    s3Upload bucket: 'test.tallos.com.br', path: '/'
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: "AWS_CREDENTIAL",]]) {
+                    sh 'aws s3 ls'
                 }
-                sh 'pwd'
-                sh 'ls'
             }
         }
     }
