@@ -31,7 +31,7 @@ pipeline {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
                     credentialsId: "AWS_CREDENTIAL",]]) {
-                    sh 'aws s3 ls'
+                    sh 'aws s3 cp index.html s3://test.tallos.com.br/"'
                 }
             }
         }
