@@ -4,7 +4,7 @@ pipeline {
         TERRAFORM_STATE_DIR = '/var/lib/jenkins/terraform-state'
     }
     stages {
-        stage('Deploy S3') {
+        stage('Deploy Infra') {
             agent {
                 docker {
                     image 'hashicorp/terraform:1.2.3'
@@ -19,6 +19,16 @@ pipeline {
                         sh 'terraform apply -auto-approve'
                     }
                 }
+            }
+        }
+        stage('Deploy Application') {
+            agent {
+                docker {
+                    image 'diegomacielp/awscli:2.9.2'
+                }
+            }
+            steps {
+                sh 'pwd'
             }
         }
     }
