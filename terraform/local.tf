@@ -1,8 +1,8 @@
 locals {
   common_tags = {
+    AWS_version = "4.41.0"
     Environment = "Staging"
     Managed_By  = "Terraform"
-    AWS_version = "4.41.0"
     TF_version  = "1.2.3"
   }
 }

@@ -1,5 +1,9 @@
 provider "aws" {
-  region = var.aws["region"]
+  region = var.aws["region2"]
+}
+provider "aws" {
+  alias  = "region1"
+  region = var.aws["region1"]
 }
 
 terraform {
