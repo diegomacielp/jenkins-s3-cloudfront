@@ -28,6 +28,9 @@ pipeline {
                 }
             }
             steps {
+                withAWS(credentials:'AWS_CREDENTIAL') {
+                    s3Upload bucket: 'test.tallos.com.br', path: '/'
+                }
                 sh 'pwd'
                 sh 'ls'
             }
