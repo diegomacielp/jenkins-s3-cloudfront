@@ -4,7 +4,23 @@ pipeline {
         TERRAFORM_STATE_DIR = '/var/lib/jenkins/terraform-state'
     }
     stages {
-        stage('Deploy S3') {
+        stage('Undeploy Application') {
+            agent {
+                docker {
+                    image 'diegomacielp/awscli:2.9.2'
+                }
+            }
+            steps {
+                dir("${env.WORKSPACE}/") {
+                    withCredentials([[
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        credentialsId: "AWS_CREDENTIAL",]]) {
+                        sh 'aws s3 rm s3://test.tallos.com.br/* --recursive'
+                    }
+                }
+            }
+        }
+        stage('Undeploy S3') {
             agent {
                 docker {
                     image 'hashicorp/terraform:1.2.3'
