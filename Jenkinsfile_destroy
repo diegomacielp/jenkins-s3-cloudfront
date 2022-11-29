@@ -15,7 +15,7 @@ pipeline {
                     withCredentials([[
                         $class: 'AmazonWebServicesCredentialsBinding',
                         credentialsId: "AWS_CREDENTIAL",]]) {
-                        sh 'aws s3 rm s3://test.tallos.com.br/* --recursive'
+                        sh 'aws s3 rm s3://test.tallos.com.br --recursive'
                     }
                 }
             }
